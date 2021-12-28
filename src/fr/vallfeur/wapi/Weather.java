@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class Weather {
 
@@ -97,7 +99,7 @@ public class Weather {
 		 * @return latitude or longitude of the city as a double
 		 */
 		public Double getCoord(WeatherInfos coordType){
-			return Double.parseDouble(reader.getData(coordType.getString()).replace("}", ""));
+			return Double.parseDouble(reader.getData(coordType.getString()));
 		}
 		
 		/**
@@ -162,7 +164,7 @@ public class Weather {
 		 * @return humidity as an integer in %
 		 */
 		public int getHumidity(){
-			return Integer.parseInt(reader.getData("humidity").replace("}", ""));
+			return Integer.parseInt(reader.getData("humidity"));
 		}
 		
 		/**
@@ -183,7 +185,7 @@ public class Weather {
 		 * @return wind direction as an integer in degrees
 		 */
 		public int getWindDirection(){
-			return Integer.parseInt(reader.getData("deg").replace("}", ""));
+			return Integer.parseInt(reader.getData("deg"));
 		}
 		
 		/**
@@ -196,5 +198,32 @@ public class Weather {
 		    
 		    int index = Math.round(((angle %= 360) < 0 ? angle + 360 : angle) / 45) % 8;
 		    return directions[index];
+		}
+		
+		/**
+		 * @return cloudiness as an integer in %
+		 */
+		public int getCloudiness(){
+			return Integer.parseInt(reader.getData("all"));
+		}
+		
+		/**
+		 * @return time of the sunrise as a Timestamp
+		 */
+		public Timestamp getSunrise(){
+			long unix = Long.parseLong(reader.getData("sunrise"));
+			Date date = new Date(unix*1000);
+			
+			return new Timestamp(date.getTime());
+		}
+		
+		/**
+		 * @return time of the sunset as a Timestamp
+		 */
+		public Timestamp getSunset(){
+			long unix = Long.parseLong(reader.getData("sunset"));
+			Date date = new Date(unix*1000);
+			
+			return new Timestamp(date.getTime());
 		}
 }

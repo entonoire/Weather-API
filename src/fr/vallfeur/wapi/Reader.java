@@ -52,7 +52,7 @@ public class Reader {
 			data = infos.toString().split(",")[3].split(":")[1].replace("\"", "");
 		}else{
 			Arrays.stream(infos.toString().split(String.format("\"%s\":", type))).skip(1).map(l -> l.split(",")[0]).forEach(l -> {
-				data = l;
+				data = l.replace("}", "");
 			});
 		}
 		return data;

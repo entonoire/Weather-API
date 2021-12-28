@@ -47,7 +47,7 @@ public enum WeatherInfos {
 	Dutch("nl"),
 	Polish("pl"),
 	Portuguese("pt"),
-	Português_Brasil("pt_br"),
+	Portugues_Brasil("pt_br"),
 	Romanian("ro"),
 	Russian("ru"),
 	Swedish("se"),
