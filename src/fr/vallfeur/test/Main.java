@@ -14,7 +14,7 @@ public class Main {
 		String[] data = scanner.nextLine().split(",");
 		scanner.close();
 		
-		Weather api = new Weather(data[0], data[1], WeatherInfos.Metric, WeatherInfos.French);
+		Weather api = new Weather("ba61e79a0119a86f77cc47164345", "Paris", WeatherInfos.Metric, WeatherInfos.French);
 		System.out.println(api.getTemp());
 		
 	}
