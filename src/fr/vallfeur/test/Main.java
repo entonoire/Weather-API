@@ -15,7 +15,7 @@ public class Main {
 		scanner.close();
 		
 		Weather api = new Weather(data[0], data[1], WeatherInfos.Metric, WeatherInfos.French);
-		System.out.println(api.getSunset());
+		System.out.println(api.getTemp());
 		
 	}
 	
